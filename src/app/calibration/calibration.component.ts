@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CARDINAL_POSITIONS } from '../app-constants';
 import { HomeService } from '../services/home.service';
 
@@ -10,14 +11,19 @@ import { HomeService } from '../services/home.service';
 export class CalibrationComponent implements OnInit {
 
   private cardinal_positions = CARDINAL_POSITIONS;
-  public upper_x_coord = this.homeService.upper_x_coord;
-  public upper_y_coord = this.homeService.upper_y_coord;
-
+  public upper_x = this.homeService.upper_x;
+  public upper_y = this.homeService.upper_y;
+  public trainees = this.homeService.trainees;
 
   constructor(
+    private router: Router,
     private homeService: HomeService
   ) { }
 
   ngOnInit() {
+  }
+
+  onNavigateToHome() {
+    this.router.navigateByUrl('');
   }
 }

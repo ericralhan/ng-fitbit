@@ -1,7 +1,23 @@
-<p>
-  calibration works!
-</p>
-<h2>Upper Right Coordinates are: {{upper_x_coord}}, {{upper_y_coord}}</h2>
-<input name="name" ngModel #name="ngModel">
+<h2>Upper Right Co-ordinates are: {{upper_x}}, {{upper_y}}</h2>
 
-<h2>The name is {{name.value}}</h2>
+<!-- List of Trainees-->
+<div *ngIf="trainees.length > 0">
+  <table>
+    <thead>List of Trainees</thead>
+    <tr>
+      <th>Name</th>
+      <th>X Co-ord</th>
+      <th>Y Co-ord</th>
+      <th>Cardinal Position</th>
+    </tr>
+    <tr *ngFor="let tr of trainees">
+      <td>{{tr.tr_name}}</td>
+      <td>{{tr.tr_x}}</td>
+      <td>{{tr.tr_y}}</td>
+      <td>{{tr.tr_cp}}</td>
+    </tr>
+  </table>
+</div>
+<div>
+  <button (click)="onNavigateToHome()">Back to Home</button>
+</div>

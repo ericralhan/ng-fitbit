@@ -4,21 +4,88 @@
     Welcome to {{ title }}!
   </h1>
 </div>
-<p>
-  home works!
-</p>
+<!-- Upper Right Co-ordinates -->
 <div>
-  <h2>Enter Upper Right Co-ordinates</h2>
-  <div>
-    <label for="upper_x_coord">Upper X Co-ord</label>
-    <input name="upper_x_coord" ngModel #upper_x_coord="ngModel">
-  </div>
-  <div>
-    <label for="upper_y_coord">Upper Y Co-ord</label>
-    <input name="upper_y_coord" ngModel #upper_y_coord="ngModel">
-  </div>
-
+  <table>
+    <thead>Enter Upper Right Co-ordinates</thead>
+    <tr>
+      <td>
+        <label for="upper_x">Upper X Co-ord</label>
+      </td>
+      <td>
+        <input name="upper_x" ngModel #upper_x="ngModel">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="upper_y">Upper Y Co-ord</label>
+      </td>
+      <td>
+        <input name="upper_y" ngModel #upper_y="ngModel">
+      </td>
+    </tr>
+  </table>
 </div>
+<br>
+<!-- Add Trainee -->
 <div>
-  <button (click)="onLaunchCalibrate(upper_x_coord.value, upper_y_coord.value)">Launch Calibration</button>
+  <table>
+    <thead>Trainee Details</thead>
+    <tr>
+      <td>
+        <label for="tr_name">Name</label>
+      </td>
+      <td>
+        <input name="tr_name" ngModel #tr_name="ngModel">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="tr_x">X Co-ord</label>
+      </td>
+      <td>
+        <input name="tr_x" ngModel #tr_x="ngModel">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="tr_y">Y Co-ord</label>
+      </td>
+      <td>
+        <input name="tr_y" ngModel #tr_y="ngModel">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="tr_cp">Cardinal Position</label>
+      </td>
+      <td>
+        <input name="tr_cp" ngModel #tr_cp="ngModel">
+      </td>
+    </tr>
+  </table>
+  <button (click)="onAddTrainee(tr_name.value, tr_x.value, tr_y.value, tr_cp.value)">Add Trainee</button>
+</div>
+<br>
+<!-- List of Trainees-->
+<div *ngIf="trainees.length > 0">
+  <table>
+    <thead>List of Trainees</thead>
+    <tr>
+      <th>Name</th>
+      <th>X Co-ord</th>
+      <th>Y Co-ord</th>
+      <th>Cardinal Position</th>
+    </tr>
+    <tr *ngFor="let tr of trainees">
+      <td>{{tr.tr_name}}</td>
+      <td>{{tr.tr_x}}</td>
+      <td>{{tr.tr_y}}</td>
+      <td>{{tr.tr_cp}}</td>
+    </tr>
+  </table>
+</div>
+<br>
+<div>
+  <button (click)="onLaunchCalibrate(upper_x.value, upper_y.value)">Launch Calibration</button>
 </div>
