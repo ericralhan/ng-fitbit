@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { HomeService } from '../services/home.service';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  title = 'Fitbits Calibration';
+  public title = 'Fitbits Calibration';
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private homeService: HomeService
+  ) { }
 
   ngOnInit() {
   }
 
+  public onLaunchCalibrate(uX: string, uY: string) {
+    this.homeService.setUpperRightCoords(uX, uY);
+    this.router.navigateByUrl('calibrate');
+  }
 }
