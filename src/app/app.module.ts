@@ -10,6 +10,7 @@ import { BasicFormComponent } from './basic-form/basic-form.component';
 import { FormsModule } from '@angular/forms';
 import { TestComponent } from './test/test.component';
 import { HomeService } from './services/home.service';
+import { CalibrationService } from './services/calibration.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HomeService } from './services/home.service';
     FormsModule
   ],
   providers: [
-    HomeService
+    HomeService,
+    CalibrationService
   ],
   bootstrap: [AppComponent]
 })
