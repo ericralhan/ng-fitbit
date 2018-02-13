@@ -2,8 +2,9 @@
 
 <!-- List of Trainees-->
 <div *ngIf="trainees.length > 0">
+  <div> List of Trainees
+  </div>
   <table>
-    <thead>List of Trainees</thead>
     <tr>
       <th>Name</th>
       <th>X Co-ord</th>
@@ -19,13 +20,26 @@
       <td>{{tr.tr_x}}</td>
       <td>{{tr.tr_y}}</td>
       <td>{{tr.tr_cp}}</td>
-      <td><button (click)="onTurnLeft(tr)">Turn Left</button></td>
-      <td><button (click)="onMoveForward(tr)">Move Forward</button></td>
-      <td><button (click)="onTurnRight(tr)">Turn Right</button></td>
-      <td><input name="bulkCommands" ngModel #bulkCommands="ngModel" (change)="bulkCommandsAction(bulkCommands.value)"></td>
+      <td>
+        <button (click)="onTurnLeft(tr)">Turn Left</button>
+      </td>
+      <td>
+        <button (click)="onMoveForward(tr)">Move Forward</button>
+      </td>
+      <td>
+        <button (click)="onTurnRight(tr)">Turn Right</button>
+      </td>
+      <td>
+        <input name="bulkCommands" ngModel #bulkCommands="ngModel" (change)="onBulkCommandsAction(tr, bulkCommands.value)">
+      </td>
     </tr>
-    <tfoot>*Bulk Commands are fired on change of text field</tfoot>
   </table>
+  <br>
+  <h4>Notes</h4>
+  <ul>
+    <li>Bulk Commands are fired on change of text field</li>
+    <li>Trainee Position(x, y) will not change when Upper(x, y) is reached</li>
+  </ul>
 </div>
 <br>
 <div>

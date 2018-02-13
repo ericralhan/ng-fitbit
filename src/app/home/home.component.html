@@ -6,8 +6,9 @@
 </div>
 <!-- Upper Right Co-ordinates -->
 <div>
+  <div> Enter Upper Right Co-ordinates
+  </div>
   <table>
-    <thead>Enter Upper Right Co-ordinates</thead>
     <tr>
       <td>
         <label for="upper_x">Upper X Co-ord</label>
@@ -29,8 +30,8 @@
 <br>
 <!-- Add Trainee -->
 <div>
+  <div>Trainee Details</div>
   <table>
-    <thead>Trainee Details</thead>
     <tr>
       <td>
         <label for="tr_name">Name</label>
@@ -60,19 +61,20 @@
         <label for="tr_cp">Cardinal Position</label>
       </td>
       <select name="tr_cp" ngModel #tr_cp="ngModel">
-          <option *ngFor="let tr_cp of cardinal_positions">
-              {{ tr_cp }}
-          </option>
+        <option *ngFor="let tr_cp of cardinal_positions">
+          {{ tr_cp }}
+        </option>
       </select>
-        </tr>
+    </tr>
   </table>
   <button (click)="onAddTrainee(tr_name.value, tr_x.value, tr_y.value, tr_cp.value)">Add Trainee</button>
 </div>
 <br>
 <!-- List of Trainees-->
 <div *ngIf="trainees.length > 0">
+  <div> List of Trainees
+  </div>
   <table>
-    <thead>List of Trainees</thead>
     <tr>
       <th>Name</th>
       <th>X Co-ord</th>

@@ -92,4 +92,23 @@ export class CalibrationService {
     return trainee;
   }
 
+  public processBulkCommands(trainee: Trainee, bulkCommands: string) {
+    for (let i = 0; i < bulkCommands.length; i++) {
+      bulkCommands.charAt(i);
+      switch (bulkCommands.charAt(i)) {
+        case 'L':
+          this.turnLeft(trainee);
+          break;
+        case 'R':
+          this.turnRight(trainee);
+          break;
+        case 'M':
+          this.moveForward(trainee);
+          break;
+        default:
+          console.error('Invalid bulk command: ' + bulkCommands.charAt(i) + ' at: ' + i);
+      }
+    }
+  }
+
 }

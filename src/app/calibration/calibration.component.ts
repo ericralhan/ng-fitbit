@@ -40,7 +40,7 @@ export class CalibrationComponent implements OnInit {
     this.router.navigateByUrl('');
   }
 
-  public bulkCommandsAction(bulkCommands: string) {
-    console.log('bulk commands: ' + bulkCommands);
+  public onBulkCommandsAction(trainee: Trainee, bulkCommands: string) {
+    this.calibrationService.processBulkCommands(trainee, bulkCommands);
   }
 }
