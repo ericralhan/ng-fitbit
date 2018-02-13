@@ -13,7 +13,7 @@
         <label for="upper_x">Upper X Co-ord</label>
       </td>
       <td>
-        <input name="upper_x" ngModel #upper_x="ngModel">
+        <input type="number" name="upper_x" ngModel #upper_x="ngModel">
       </td>
     </tr>
     <tr>
@@ -21,7 +21,7 @@
         <label for="upper_y">Upper Y Co-ord</label>
       </td>
       <td>
-        <input name="upper_y" ngModel #upper_y="ngModel">
+        <input type="number" name="upper_y" ngModel #upper_y="ngModel">
       </td>
     </tr>
   </table>
@@ -44,7 +44,7 @@
         <label for="tr_x">X Co-ord</label>
       </td>
       <td>
-        <input name="tr_x" ngModel #tr_x="ngModel">
+        <input type="number" name="tr_x" ngModel #tr_x="ngModel">
       </td>
     </tr>
     <tr>
@@ -52,17 +52,19 @@
         <label for="tr_y">Y Co-ord</label>
       </td>
       <td>
-        <input name="tr_y" ngModel #tr_y="ngModel">
+        <input type="number" name="tr_y" ngModel #tr_y="ngModel">
       </td>
     </tr>
     <tr>
       <td>
         <label for="tr_cp">Cardinal Position</label>
       </td>
-      <td>
-        <input name="tr_cp" ngModel #tr_cp="ngModel">
-      </td>
-    </tr>
+      <select name="tr_cp" ngModel #tr_cp="ngModel">
+          <option *ngFor="let tr_cp of cardinal_positions">
+              {{ tr_cp }}
+          </option>
+      </select>
+        </tr>
   </table>
   <button (click)="onAddTrainee(tr_name.value, tr_x.value, tr_y.value, tr_cp.value)">Add Trainee</button>
 </div>

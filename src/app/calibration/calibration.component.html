@@ -9,6 +9,10 @@
       <th>X Co-ord</th>
       <th>Y Co-ord</th>
       <th>Cardinal Position</th>
+      <th>Left</th>
+      <th>Move</th>
+      <th>Right</th>
+      <th>Bulk Commands</th>
     </tr>
     <tr *ngFor="let tr of trainees">
       <td>{{tr.tr_name}}</td>
@@ -18,9 +22,12 @@
       <td><button (click)="onTurnLeft(tr)">Turn Left</button></td>
       <td><button (click)="onMoveForward(tr)">Move Forward</button></td>
       <td><button (click)="onTurnRight(tr)">Turn Right</button></td>
+      <td><input name="bulkCommands" ngModel #bulkCommands="ngModel" (change)="bulkCommandsAction(bulkCommands.value)"></td>
     </tr>
+    <tfoot>*Bulk Commands are fired on change of text field</tfoot>
   </table>
 </div>
+<br>
 <div>
   <button (click)="onNavigateToHome()">Back to Home</button>
 </div>

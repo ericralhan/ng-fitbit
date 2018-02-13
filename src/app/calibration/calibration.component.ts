@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CARDINAL_POSITIONS } from '../app-constants';
 import { HomeService } from '../services/home.service';
 import { CalibrationService } from '../services/calibration.service';
 import { Trainee } from '../shared/trainee';
@@ -12,7 +11,6 @@ import { Trainee } from '../shared/trainee';
 })
 export class CalibrationComponent implements OnInit {
 
-  private cardinal_positions = CARDINAL_POSITIONS;
   public upper_x = this.homeService.upper_x;
   public upper_y = this.homeService.upper_y;
   public trainees = this.homeService.trainees;
@@ -37,7 +35,12 @@ export class CalibrationComponent implements OnInit {
   public onMoveForward(trainee: Trainee) {
     trainee = this.calibrationService.moveForward(trainee);
   }
+
   public onNavigateToHome() {
     this.router.navigateByUrl('');
+  }
+
+  public bulkCommandsAction(bulkCommands: string) {
+    console.log('bulk commands: ' + bulkCommands);
   }
 }

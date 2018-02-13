@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HomeService } from '../services/home.service';
 import { Trainee } from '../shared/trainee';
-import { ViewChild } from '@angular/core/src/metadata/di';
-import { ElementRef } from '@angular/core/src/linker/element_ref';
+import { CARDINAL_POSITIONS } from '../app-constants';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +13,7 @@ export class HomeComponent implements OnInit {
 
   public title = 'Fitbits Calibration';
   public trainees: Array<Trainee> = new Array<Trainee>();
+  public cardinal_positions = CARDINAL_POSITIONS;
 
   constructor(
     private router: Router,
@@ -30,8 +30,23 @@ export class HomeComponent implements OnInit {
 
   public onLaunchCalibrate(uX: number, uY: number) {
     this.homeService.setUpperRightCoords(uX, uY);
+    this.validateTrainees();
     this.homeService.setTrainees(this.trainees);
     this.router.navigateByUrl('calibrate');
   }
-
+  /**
+   * If trainee x,y are greater than upper x,y,
+   * then this function will aassign x and y coords
+   * to max upper x,y
+   */
+  private validateTrainees() {
+    this.trainees.forEach(element => {
+      if (element.tr_x > this.homeService.upper_x) {
+        element.tr_x = this.homeService.upper_x;
+      }
+      if (element.tr_y > this.homeService.upper_y) {
+        element.tr_y = this.homeService.upper_y;
+      }
+    });
+  }
 }
