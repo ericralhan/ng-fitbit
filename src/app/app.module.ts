@@ -6,9 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CalibrationComponent } from './calibration/calibration.component';
 import { HomeComponent } from './home/home.component';
-import { BasicFormComponent } from './basic-form/basic-form.component';
 import { FormsModule } from '@angular/forms';
-import { TestComponent } from './test/test.component';
 import { HomeService } from './services/home.service';
 import { CalibrationService } from './services/calibration.service';
 
@@ -17,8 +15,6 @@ import { CalibrationService } from './services/calibration.service';
     AppComponent,
     CalibrationComponent,
     HomeComponent,
-    BasicFormComponent,
-    TestComponent
   ],
   imports: [
     BrowserModule,
