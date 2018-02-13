@@ -13,11 +13,7 @@ import { ElementRef } from '@angular/core/src/linker/element_ref';
 export class HomeComponent implements OnInit {
 
   public title = 'Fitbits Calibration';
-  public trainees = [];
-  public tr_name: string;
-  public tr_x = 0;
-  public tr_y = 0;
-  public tr_cp: string;
+  public trainees: Array<Trainee> = new Array<Trainee>();
 
   constructor(
     private router: Router,
@@ -32,16 +28,10 @@ export class HomeComponent implements OnInit {
     this.trainees.push(trainee);
   }
 
-  public onLaunchCalibrate(uX: string, uY: string) {
+  public onLaunchCalibrate(uX: number, uY: number) {
     this.homeService.setUpperRightCoords(uX, uY);
     this.homeService.setTrainees(this.trainees);
     this.router.navigateByUrl('calibrate');
   }
 
-  private clearTraineeForm() {
-    this.tr_x = 0;
-    this.tr_y = 0;
-    this.tr_name = '';
-    this.tr_cp = '';
-  }
 }

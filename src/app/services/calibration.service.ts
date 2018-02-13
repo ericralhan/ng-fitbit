@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
+import { HomeService } from './home.service';
 import { Trainee } from '../shared/trainee';
 
 @Injectable()
 export class CalibrationService {
 
-  constructor() { }
+  constructor(
+    private homeService: HomeService
+  ) { }
 
   /**
    * Function to navigate left
@@ -59,18 +62,34 @@ export class CalibrationService {
   public moveForward(trainee: Trainee): Trainee {
     switch (trainee.tr_cp) {
       case 'N':
-        trainee.tr_y += 1;
+        trainee.tr_y++;
         break;
       case 'S':
-        trainee.tr_y -= 1;
+        trainee.tr_y--;
         break;
       case 'E':
-        trainee.tr_x += 1;
+        trainee.tr_x++;
         break;
       case 'W':
-        trainee.tr_x -= 1;
+        trainee.tr_x--;
         break;
     }
+
+    // these checks are needed to keep trainee in the graph
+    if (trainee.tr_x < 0) {
+      trainee.tr_x = 0;
+    }
+    if (trainee.tr_y < 0) {
+      trainee.tr_y = 0;
+    }
+    if (trainee.tr_x > this.homeService.upper_x) {
+      trainee.tr_x = this.homeService.upper_x;
+    }
+    if (trainee.tr_y > this.homeService.upper_y) {
+      trainee.tr_y = this.homeService.upper_y;
+    }
+
     return trainee;
   }
+
 }

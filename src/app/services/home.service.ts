@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
+import { Trainee } from '../shared/trainee';
 
 @Injectable()
 export class HomeService {
 
-  upper_x: string;
-  upper_y: string;
-  trainees: Array<any>;
+  upper_x: number;
+  upper_y: number;
+  trainees: Array<Trainee>;
 
   constructor() { }
 
-  public setUpperRightCoords(uX: string, uY: string) {
+  public setUpperRightCoords(uX: number, uY: number) {
     this.upper_x = uX;
     this.upper_y = uY;
   }
